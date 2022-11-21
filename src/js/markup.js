@@ -1,28 +1,40 @@
-export { renderListMarkup, renderInfoMarkup };
-
-function renderListMarkup(info) {
-  const listMarkup = info
-    .map(item => {
-      return `
-      <li>
-      <img src="${item.flags.svg}" alt="flag of ${item.name.common}" width="30" />
-      <span class="listname">${item.name.common}</span>
-      </li>
-      `;
-    })
+export default function renderMarkup(data) {
+  const markup = data
+    .map(
+      ({
+        webformatURL,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) => {
+        return `
+        <a href="${largeImageURL}" class="card pagination__next">
+          <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+          <div class="card__info">
+            <div class="card__item">
+              <b>Likes</b>
+              <p>${likes}</p>
+            </div>
+            <div class="card__item">
+              <b>Views</b>
+              <p>${views}</p>
+            </div>
+            <div class="card__item">
+              <b>Comments</b>
+              <p>${comments}</p>
+            </div>
+            <div class="card__item">
+              <b>Downloads</b>
+              <p>${downloads}</p>
+            </div>
+          </div>
+        </a>`;
+      }
+    )
     .join('');
 
-  return listMarkup;
-}
-
-function renderInfoMarkup(info) {
-  const languagesList = Object.values(info[0].languages).join(', ');
-
-  return `
-  <img src="${info[0].flags.svg}" alt="flag of ${info[0].name.common}" width="50" />
-  <span class="infoname">${info[0].name.common}</span>
-  <p><b>Capital</b>: ${info[0].capital}</p>
-  <p><b>Population</b>: ${info[0].population}</p>
-  <p><b>Languages</b>: ${languagesList}</p>
-  `;
+  return markup;
 }
