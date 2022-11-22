@@ -36,7 +36,6 @@ ul {
 img {
   display: block;
   object-fit: cover;
-  height: 100%;
 }
 
 p {
@@ -73,6 +72,26 @@ button {
   border-radius: 50%;
 }
 
+#infinite {
+  display: none;
+}
+
+.infinite__label {
+  position: absolute;
+  top: 5;
+  right: 75;
+  border-radius: 50%;
+  transition: 0.5s ease;
+}
+
+.infinite__label > img {
+  object-fit: contain;
+}
+
+#infinite:checked ~ .infinite__label {
+  background-color: coral;
+}
+
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -85,6 +104,10 @@ button {
   flex-direction: column;
   width: 400px;
   height: 480px;
+}
+
+.card > img {
+  height: 400px;
 }
 
 .card__info {
