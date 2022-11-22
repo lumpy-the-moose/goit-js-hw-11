@@ -17,6 +17,7 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captions: true,
   captionsData: 'alt',
   captionDelay: 250,
+  scrollZoom: false,
 });
 
 export default async function loadMoreHandler(searchQuery, page, per_page) {
