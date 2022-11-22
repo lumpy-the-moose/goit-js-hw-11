@@ -42,7 +42,7 @@ searchForm.addEventListener('submit', async e => {
 
   const fetchedImages = await fetchImages(searchBox.value, page, per_page);
 
-  if (fetchedImages.total == 0) {
+  if (fetchedImages.total === 0) {
     Notify.info(
       'Sorry, there are no images matching your search query. Please try again.'
     );
